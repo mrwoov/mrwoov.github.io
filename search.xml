@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2025/03/04/seata/"/>
+      <url>/2025/03/04/seata/</url>
+      
+        <content type="html"><![CDATA[<h1 id="seata"><a href="#seata" class="headerlink" title="seata"></a>seata</h1><p>seata是一个分布式事务中间件</p><h2 id="三大角色"><a href="#三大角色" class="headerlink" title="三大角色"></a>三大角色</h2><ul><li>TC：事务协调器，维护全局和分支的事务，驱动提交和回滚</li><li>TM：事务管理器，定义全局事务的范围，开始、提交、回滚全局事务</li><li>RM：资源管理器，管理分支事务处理的资源，以及分支的事务的提交、注册、回滚</li></ul><h2 id="事务提交过程"><a href="#事务提交过程" class="headerlink" title="事务提交过程"></a>事务提交过程</h2><img src="http://oss.wooovi.cn/blog/202503041650032.png" alt="image-20250304165002935" style="zoom:50%;" /><ol><li>TM向TC发起全局事务创建，TC返回XID</li><li>TM调用业务方法，RM向TC注册分支事务</li><li>RM执行数据库操作并生成undo log，并提交分支事务</li><li>业务执行完成后，TM向TC提交全局提交或回滚请求</li><li>TC收到请求后，通知RM执行提交或者回滚请求</li><li>RM执行提交或回滚请求，并将结果通知TC</li><li>TC记录事务状态为提交或者回滚完成</li></ol><h2 id="AT模式"><a href="#AT模式" class="headerlink" title="AT模式"></a>AT模式</h2><p>自动代理数据库操作，在事务提交前生成回滚日志undo log，以便在回滚时通过undo log恢复数据</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2025/02/19/hello-world/"/>
       <url>/2025/02/19/hello-world/</url>
